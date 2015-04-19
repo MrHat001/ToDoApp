@@ -31,7 +31,7 @@ var bypassSecure = function(req, res, next){
 if(process.env.NODE_ENV ==="production"){
 	module.exports.requiresSecure = requiresSecure;
 } else {
-	module.exports.requireSecure = bypassSecure;
+	module.exports.requiresSecure = bypassSecure;
 }
 
 module.exports.requiresLogin = requiresLogin;

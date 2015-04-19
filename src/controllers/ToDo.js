@@ -81,3 +81,4 @@ var doneToDo = function(req, res){
 
 module.exports.todoPage = todoPage;
 module.exports.makeToDo = makeToDo;
+module.exports.doneToDo = doneToDo;

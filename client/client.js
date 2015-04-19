@@ -47,7 +47,7 @@ $(document).ready(function(){
 		
 		$("#errorMessage").text("");
 		
-		if($("#user".val() == '' || $("#pass").val() == ''){
+		if($("#user").val() == '' || $("#pass").val() == ''){
 			handleError("Username or Password is empty");
 			return false;
 		}

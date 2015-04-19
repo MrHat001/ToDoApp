@@ -4,24 +4,24 @@ block append style
 block body
   nav
     .navlink
-	  a(href="/logout") Log out
+    a(href="/logout") Log out
   section#makeToDo
     form#todoForm(class="todoForm", name="todoForm", action="/todo", method="POST")
-	  label(for="desc") What to do:
-	  input#todoDesc(type="text", name="desc", placeholder="something")
-	  a#todoSubmit(class="makeToDoSubmit", href="#") Make ToDo
+      label(for="desc") What to do:
+      input#todoDesc(type="text", name="desc", placeholder="something")
+      a#todoSubmit(class="makeToDoSubmit", href="#") Make ToDo
   section#todo
     if !todos || todos.length == 0
-	  div.todo
-	    h3.emptyToDo No Things to do yet
+      div.todo
+        h3.emptyToDo No Things to do yet
     else
-	  each val in todos
-	    div.todo
-		  h3.todoDesc #{val.desc}
-		  button(class="doneBtn", value=#{val.uid}) Done
-		  a(href="/delete?uid=#{val.uid}")
+      each val in todos
+        div.todo
+          h3.todoDesc #{val.desc}
+          button(class="doneBtn", value=#{val.uid}) Done
+          a(href="/delete?uid=#{val.uid}")
   #todoMessage
     h3
-	  span#errorMessage
+      span#errorMessage
 block scripts
   script(src="/assets/todo.js")

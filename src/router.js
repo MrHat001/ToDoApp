@@ -7,7 +7,7 @@ var router = function(app){
 	app.get("/signup", mid.requiresSecure, mid.requiresLogout, controllers.Account.signupPage);
 	app.post("/signup", mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
 	app.get("/logout", mid.requiresLogin, controllers.Account.logout);
-	app.get("/todo", mid.requiresLogin, controllers.ToDo.ToDoPage);
+	app.get("/todo", mid.requiresLogin, controllers.ToDo.todoPage);
 	app.post("/todo", mid.requiresLogin, controllers.ToDo.makeToDo);
 	app.get("/delete", mid.requiresLogin, controllers.ToDo.doneToDo);
 	app.get("/", mid.requiresSecure, controllers.Account.loginPage);
