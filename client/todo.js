@@ -32,7 +32,7 @@ $(document).ready(function(){
 			return false;
 		}
 		
-		sendAjax($("todoForm").attr("action"), $("#todoForm").serialize();
+		sendAjax($("todoForm").attr("action"), $("#todoForm").serialize());
 		
 		return false;
 	});

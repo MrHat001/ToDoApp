@@ -18,8 +18,7 @@ block body
       each val in todos
         div.todo
           h3.todoDesc #{val.desc}
-          button(class="doneBtn", value=#{val.uid}) Done
-          a(href="/delete?uid=#{val.uid}")
+          a(href="/delete?uid=#{val.uid}") Done
   #todoMessage
     h3
       span#errorMessage
