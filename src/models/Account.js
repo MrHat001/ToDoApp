@@ -66,7 +66,7 @@ AccountSchema.statics.generateHash = function(password, callback){
 };
 
 AccountSchema.statics.authenticate = function(username, password, callback){
-	return AccountModel.findByusername(username, function(err, doc){
+	return AccountModel.findByUsername(username, function(err, doc){
 		if(err){
 			return callback(err);
 		}
