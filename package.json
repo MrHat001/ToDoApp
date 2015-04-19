@@ -8,12 +8,12 @@
 	"pretest": "jshint ./src",
     "test": "echo \"Tests Complete\""
   },
-  "keywords": {
+  "keywords": [
 	"Node",
 	"MVC",
 	"Redis",
 	"ToDo"
-  },
+  ],
   "author": "Everett Leo",
   "license": "Apache 2.0",
   "dependencies": {
