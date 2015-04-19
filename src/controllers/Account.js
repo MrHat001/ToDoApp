@@ -28,7 +28,7 @@ var login = function(req, res){
 			return res.status(401).json({error: "Wrong username or password"});
 		}
 		
-		req.session.account = Account.toAPI();
+		req.session.account = account.toAPI();
 		res.json({redirect: '/todo'});
 	});
 }
