@@ -1,0 +1,26 @@
+extends ./base.jade
+block append style
+  link(rel="stylesheet", type="text/css", href="/assets/style.css")
+block body
+  nav
+    .navlink
+      a(href="/logout") Log out
+  section#makeToDo
+    form#todoForm(class="todoForm", name="todoForm", action="/todo", method="POST")
+      label(for="desc") What to do:
+      input#todoDesc(type="text", name="desc", placeholder="something")
+      a#todoSubmit(class="makeToDoSubmit", href="#") Make ToDo
+  section#todo
+    if !todos || todos.length == 0
+      div.todo
+        h3.emptyToDo No Things to do yet
+    else
+      each val in todos
+        div.todo
+          h3.todoDesc #{val.desc}
+          a#doneBtn(href="/delete?uid=#{val.uid}") Done
+  #todoMessage
+    h3
+      span#errorMessage
+block scripts
+  script(src="/assets/todo.js")
