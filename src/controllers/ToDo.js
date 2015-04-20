@@ -10,11 +10,12 @@ var todoPage = function(req, res){
 			return res.status(400).json({error:'An error occurred'});
 		}
 		
-		res.render('app', {todo: docs});
+		res.render('app', {todos: docs});
 	});
 };
 
 var makeToDo = function(req, res){
+	console.log("make todo");
 	if(!req.body.desc){
 		return res.status(400).json({error: "What do you want to do"});
 	}
@@ -26,7 +27,7 @@ var makeToDo = function(req, res){
 		UID = "";
 		repeated = false;
 		for(var i = 0; i < 5; i++){
-			UID += chars.charAt(math.floor(Math.random() * chars.length));
+			UID += chars.charAt(Math.floor(Math.random() * chars.length));
 		}
 		ToDo.ToDoModel.findByOwner(req.session.account._id, function(err, docs){
 			if(err){
@@ -69,7 +70,7 @@ var doneToDo = function(req, res){
 	
 	deleteToDo = new ToDo.ToDoModel(finishedToDo);
 	
-	finishedToDo.remove(function(err){
+	deleteToDo.remove(function(err){
 		if(err){
 			console.log(err);
 			return res.status(400).json({error:'An error occurred'});

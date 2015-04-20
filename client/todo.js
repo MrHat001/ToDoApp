@@ -22,7 +22,7 @@ $(document).ready(function(){
 		});
 	}
 	
-	$("makeToDoSubmit").on("click", function(e){
+	$("#todoSubmit").on("click", function(e){
 		e.preventDefault();
 		
 		$("#errorMessage").text("");
