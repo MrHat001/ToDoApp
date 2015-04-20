@@ -4,7 +4,7 @@ block append style
 block body
   nav
     .navlink
-    a(href="/logout") Log out
+      a(href="/logout") Log out
   section#makeToDo
     form#todoForm(class="todoForm", name="todoForm", action="/todo", method="POST")
       label(for="desc") What to do:
@@ -18,7 +18,7 @@ block body
       each val in todos
         div.todo
           h3.todoDesc #{val.desc}
-          a(href="/delete?uid=#{val.uid}") Done
+          a#doneBtn(href="/delete?uid=#{val.uid}") Done
   #todoMessage
     h3
       span#errorMessage

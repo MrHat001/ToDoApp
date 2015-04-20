@@ -69,19 +69,25 @@ var doneToDo = function(req, res){
 				console.log(err);
 				return res.status(400).json({error:'An error occurred'});
 			}
-			res.json({redirect:'/todo'});
-			//res.redirect("/todo");
+			res.redirect("/todo");
 		});
 	};*/
 	
 	var doneToDo = ToDo.ToDoModel.findById(req.session.account._id, req.query.uid, function(err, doc){
-		doc.remove(function(err){
+		ToDo.ToDoModel.remove(doc, function(err){
 			if(err){
 				console.log(err);
 				return res.status(400).json({error:'An error occurred'});
 			}
 			res.redirect("/todo");
 		});
+		/*doc.remove(function(err){
+			if(err){
+				console.log(err);
+				return res.status(400).json({error:'An error occurred'});
+			}
+			res.redirect("/todo");
+		});*/
 	});
 };
 
