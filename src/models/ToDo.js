@@ -38,7 +38,7 @@ ToDoSchema.statics.findByOwner = function(ownerId, callback){
 		owner: mongoose.Types.ObjectId(ownerId)
 	};
 	
-	return ToDoModel.find(search).select('desc').exec(callback);
+	return ToDoModel.find(search).select('desc uid').exec(callback);
 };
 
 ToDoSchema.statics.findById = function(ownerId, itemId, callback){
@@ -47,7 +47,27 @@ ToDoSchema.statics.findById = function(ownerId, itemId, callback){
 		owner: mongoose.Types.ObjectId(ownerId)
 	};
 	
-	return ToDoModel.find(search).select('desc').exec(callback);
+	return ToDoModel.find(search).select('desc uid').exec(callback);
+};
+
+ToDoSchema.statics.removeById = function(ownerId, itemId, callback){
+	var search = {
+		uid: mongoose.Types.ObjectId(itemId),
+		owner: mongoose.Types.ObjectId(ownerId)
+	};
+	
+	ToDoModel.findOne(search, function(err, foundToDo){
+		console.log(foundToDo);
+		foundToDo.remove(function(err){
+			if(err){
+				console.log(err);
+				return res.status(400).json({error:'An error occurred'});
+			}
+			
+			return callback();
+		});
+		return callback();
+	});
 };
 
 ToDoModel = mongoose.model('ToDo', ToDoSchema);

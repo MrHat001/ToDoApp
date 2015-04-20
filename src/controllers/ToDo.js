@@ -15,14 +15,13 @@ var todoPage = function(req, res){
 };
 
 var makeToDo = function(req, res){
-	console.log("make todo");
 	if(!req.body.desc){
 		return res.status(400).json({error: "What do you want to do"});
 	}
 	
 	var UID;
 	var repeated;
-	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+	var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 	do{
 		UID = "";
 		repeated = false;
@@ -43,6 +42,7 @@ var makeToDo = function(req, res){
 		});
 	}while(repeated);
 	
+	console.log(UID);
 	
 	var todoData = {
 		uid: UID,
@@ -63,20 +63,25 @@ var makeToDo = function(req, res){
 };
 
 var doneToDo = function(req, res){
-	var finishedToDo = {
-		uid: req.query.uid,
-		owner: req.session.account._id
-	};
+	/*var doneToDo = function(req, res){
+		ToDoModel.removeById(req.session.account._id, req.query.uid, function(err, docs){
+			if(err){
+				console.log(err);
+				return res.status(400).json({error:'An error occurred'});
+			}
+			res.json({redirect:'/todo'});
+			//res.redirect("/todo");
+		});
+	};*/
 	
-	deleteToDo = new ToDo.ToDoModel(finishedToDo);
-	
-	deleteToDo.remove(function(err){
-		if(err){
-			console.log(err);
-			return res.status(400).json({error:'An error occurred'});
-		}
-		
-		res.json({redirect:'/todo'});
+	var doneToDo = ToDo.ToDoModel.findById(req.session.account._id, req.query.uid, function(err, doc){
+		doc.remove(function(err){
+			if(err){
+				console.log(err);
+				return res.status(400).json({error:'An error occurred'});
+			}
+			res.redirect("/todo");
+		});
 	});
 };
 
