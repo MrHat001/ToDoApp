@@ -8,7 +8,8 @@ var requiresLogin = function(req, res, next){
 
 var requiresLogout = function(req, res, next){
 	if(req.session.account){
-		return res.redirect('/todo');
+		return res.json({redirect:'/todo'});
+		//return res.redirect('/todo');
 	}
 	
 	next();
