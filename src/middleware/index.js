@@ -11,6 +11,7 @@ var requiresLogout = function(req, res, next){
 	if(req.session.account){
 		return res.json({redirect:'/todo'});
 		//return res.redirect('/todo');
+	}
 	
 	next();
 };
