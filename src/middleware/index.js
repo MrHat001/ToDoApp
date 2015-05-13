@@ -7,6 +7,7 @@ var requiresLogin = function(req, res, next){
 };
 
 var requiresLogout = function(req, res, next){
+	console.log(req.session);
 	if(req.session.account){
 		return res.json({redirect:'/todo'});
 		//return res.redirect('/todo');
