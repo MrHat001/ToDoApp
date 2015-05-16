@@ -9,7 +9,7 @@ var todoPage = function(req, res){
 			console.log(err);
 			return res.status(400).json({error:'An error occurred'});
 		}
-		
+		console.log(docs);
 		res.render('app', {todos: docs});
 	});
 };
