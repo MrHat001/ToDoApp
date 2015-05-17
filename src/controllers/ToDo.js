@@ -14,6 +14,17 @@ var todoPage = function(req, res){
 	});
 };
 
+var getToDos = function(req, res){
+	ToDo.ToDoModel.findByOwner(req.body.accountID, function(err, docs){
+		if(err){
+			console.log(err);
+			return res.status(400).json({error:'An error occurred'});
+		}
+		console.log(docs);
+		res.json(docs);
+	});
+};
+
 var makeToDo = function(req, res){
 	if(!req.body.desc){
 		return res.status(400).json({error: "What do you want to do"});
@@ -92,5 +103,6 @@ var doneToDo = function(req, res){
 };
 
 module.exports.todoPage = todoPage;
+module.exports.getToDos = getToDos
 module.exports.makeToDo = makeToDo;
 module.exports.doneToDo = doneToDo;
