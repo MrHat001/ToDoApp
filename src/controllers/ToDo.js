@@ -63,7 +63,7 @@ var makeToDo = function(req, res){
 };
 
 var getToDos = function(req, res){
-	ToDo.ToDoModel.findByOwner(req.body.accountID, function(err, docs){
+	ToDo.ToDoModel.findByOwner(req.session.account._id, function(err, docs){
 		console.log("accountID: " + req.body.accountID);
 		if(err){
 			console.log(err);
@@ -76,6 +76,7 @@ var getToDos = function(req, res){
 
 var makeiosToDo = function(req, res){
 	if(!req.body.desc){
+		console.log(req.cookies)
 		return res.status(400).json({error: "No Description of what you want to do"});
 	}
 	
