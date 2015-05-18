@@ -33,24 +33,6 @@ var login = function(req, res){
 	});
 }
 
-var iosLogin = function(req, res){
-	var username = req.body.username;
-	var password = req.body.pass;
-	
-	if(!username || !password){
-		return res.status(400).json({error: "All fields are required"});
-	}
-	
-	Account.AccountModel.authenticate(username, password, function(err, account){
-		if(err || !account){
-			return res.status(401).json({error: "Wrong username or password"});
-		}
-		
-		req.session.account = account.toAPI();
-		res.json({redirect: '/todo'});
-	});
-}
-
 var signup = function(req, res){
 	if(!req.body.username || !req.body.pass || !req.body.pass2){
 		return res.status(400).json({error: "All fields are required"});
@@ -84,7 +66,6 @@ var signup = function(req, res){
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
-module.exports.iosLogin = iosLogin;
 module.exports.logout = logout;
 module.exports.signupPage = signupPage;
 module.exports.signup = signup;
