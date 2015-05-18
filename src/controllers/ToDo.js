@@ -64,7 +64,6 @@ var makeToDo = function(req, res){
 
 var getToDos = function(req, res){
 	ToDo.ToDoModel.findByOwner(req.session.account._id, function(err, docs){
-		console.log("accountID: " + req.body.accountID);
 		if(err){
 			console.log(err);
 			return res.status(400).json({error:'An error occurred'});
@@ -89,7 +88,7 @@ var makeiosToDo = function(req, res){
 		for(var i = 0; i < 5; i++){
 			UID += chars.charAt(Math.floor(Math.random() * chars.length));
 		}
-		ToDo.ToDoModel.findByOwner(req.body.accountID, function(err, docs){
+		ToDo.ToDoModel.findByOwner(req.session.account._id, function(err, docs){
 			if(err){
 				console.log(err);
 				return res.status(400).json({error:'An error occurred'});
@@ -108,7 +107,7 @@ var makeiosToDo = function(req, res){
 	var todoData = {
 		uid: UID,
 		desc: req.body.desc,
-		owner: req.body.accountID
+		owner: req.session.account._id
 	};
 	
 	var newToDo = new ToDo.ToDoModel(todoData);
