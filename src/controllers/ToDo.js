@@ -69,7 +69,7 @@ var getToDos = function(req, res){
 			return res.status(400).json({error:'An error occurred'});
 		}
 		console.log(docs);
-		res.json({docs});
+		res.json({"todos": docs});
 	});
 };
 
@@ -107,7 +107,7 @@ var makeiosToDo = function(req, res){
 	var todoData = {
 		uid: UID,
 		desc: req.body.desc,
-		owner: req.session.account._id
+		owner: req.session.account
 	};
 	
 	var newToDo = new ToDo.ToDoModel(todoData);
