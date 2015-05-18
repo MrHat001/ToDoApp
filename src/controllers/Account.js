@@ -47,7 +47,7 @@ var iosLogin = function(req, res){
 		}
 		
 		req.session.account = account.toAPI();
-		res.json({redirect: account.toAPI()});
+		res.json({redirect: account.toAPI()._id});
 	});
 }
 
