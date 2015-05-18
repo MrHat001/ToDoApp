@@ -64,6 +64,7 @@ var makeToDo = function(req, res){
 
 var getToDos = function(req, res){
 	ToDo.ToDoModel.findByOwner(req.body.accountID, function(err, docs){
+		console.log(req.body.accountID);
 		if(err){
 			console.log(err);
 			return res.status(400).json({error:'An error occurred'});
