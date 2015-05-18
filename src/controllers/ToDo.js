@@ -69,7 +69,7 @@ var getToDos = function(req, res){
 			return res.status(400).json({error:'An error occurred'});
 		}
 		console.log(docs);
-		res.json({"todos": docs});
+		res.json({docs});
 	});
 };
 
