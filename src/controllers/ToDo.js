@@ -75,7 +75,7 @@ var getToDos = function(req, res){
 
 var makeiosToDo = function(req, res){
 	if(!req.body.desc){
-		return res.status(400).json({error: "What do you want to do"});
+		return res.status(400).json({error: "No Description of what you want to do"});
 	}
 	
 	var UID;
