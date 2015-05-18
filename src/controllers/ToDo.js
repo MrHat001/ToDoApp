@@ -117,7 +117,8 @@ var makeiosToDo = function(req, res){
 			return res.status(400).json({error:'An error occurred'});
 		}
 		
-		return res.status(200).json({redirect: '/iostodo'});
+		//return res.status(200).json({redirect: '/iostodo'});
+		return res.status(400).json({error: 'none'});
 	});
 };
 
