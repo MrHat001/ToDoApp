@@ -76,7 +76,7 @@ var getToDos = function(req, res){
 
 var makeiosToDo = function(req, res){
 	if(!req.body.desc){
-		console.log(req.cookies)
+		console.log(req.session.account._id)
 		return res.status(400).json({error: "No Description of what you want to do"});
 	}
 	
