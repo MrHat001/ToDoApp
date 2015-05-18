@@ -84,6 +84,7 @@ var signup = function(req, res){
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
+module.exports.iosLogin = iosLogin;
 module.exports.logout = logout;
 module.exports.signupPage = signupPage;
 module.exports.signup = signup;
