@@ -151,8 +151,21 @@ var doneToDo = function(req, res){
 	});
 };
 
+var iosDoneToDo = function(req, res){
+	var doneToDo = ToDo.ToDoModel.findById(req.session.account._id, req.query.uid, function(err, doc){
+		ToDo.ToDoModel.remove(doc, function(err){
+			if(err){
+				console.log(err);
+				return res.status(400).json({error:'An error occurred'});
+			}
+			res.json({redirect: "/iostodo"});
+		});
+	});
+}
+
 module.exports.todoPage = todoPage;
 module.exports.makeToDo = makeToDo;
 module.exports.getToDos = getToDos;
 module.exports.makeiosToDo = makeiosToDo;
 module.exports.doneToDo = doneToDo;
+module.exports.iosDoneToDo = iosDoneToDo;

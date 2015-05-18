@@ -12,6 +12,7 @@ var router = function(app){
 	app.get("/iostodo", mid.requiresLogin, controllers.ToDo.getToDos);
 	app.post("/iostodo", mid.requiresLogin, controllers.ToDo.makeiosToDo);
 	app.get("/delete", mid.requiresLogin, controllers.ToDo.doneToDo);
+	app.get("/iosdelete", mid.requiresLogin, controllers.ToDo.iosDoneToDo);
 	app.get("/", mid.requiresSecure, controllers.Account.loginPage);
 };
 
